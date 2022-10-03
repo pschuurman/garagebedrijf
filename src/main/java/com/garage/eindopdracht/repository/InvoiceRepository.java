@@ -1,4 +1,7 @@
 package com.garage.eindopdracht.repository;
 
-public interface InvoiceRepository {
+import com.garage.eindopdracht.model.Invoice;
+import org.springframework.data.repository.CrudRepository;
+
+public interface InvoiceRepository extends CrudRepository<Invoice, Long> {
 }

@@ -1,4 +1,7 @@
 package com.garage.eindopdracht.repository;
 
-public interface RepairRepository {
+import com.garage.eindopdracht.model.Repair;
+import org.springframework.data.repository.CrudRepository;
+
+public interface RepairRepository extends CrudRepository<Repair, Long> {
 }

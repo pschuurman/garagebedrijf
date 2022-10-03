@@ -1,4 +1,7 @@
 package com.garage.eindopdracht.repository;
 
-public interface CarRepository {
+import com.garage.eindopdracht.model.Car;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CarRepository extends CrudRepository<Car, Long> {
 }
