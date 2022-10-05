@@ -1,8 +1,7 @@
 package com.garage.eindopdracht.controller;
 
-import com.garage.eindopdracht.model.Customer;
-import com.garage.eindopdracht.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.garage.eindopdracht.dto.CustomerDto;
+import com.garage.eindopdracht.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    @Autowired
-    CustomerRepository repos;
+    private final CustomerService service;
+
+    public CustomerController(CustomerService service) { this.service = service; }
+
+
     @PostMapping("")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customerInput) {
-        Customer newCustomer = repos.save(customerInput);
-        return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
+    public ResponseEntity<Long> createCustomer(@RequestBody CustomerDto customerDto) {
+        Long customerId = service.createCustomer(customerDto);
+        return new ResponseEntity<>(customerId, HttpStatus.CREATED);
     }
 }

@@ -1,9 +1,9 @@
 package com.garage.eindopdracht.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -24,9 +24,9 @@ public class Customer {
     private String postalCode;
 
 
-
-
-
+    @OneToMany(mappedBy = "customer")
+    @JsonIgnore
+    List<Car> cars;
 
 
     public Long getId() {
@@ -76,4 +76,5 @@ public class Customer {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
 }

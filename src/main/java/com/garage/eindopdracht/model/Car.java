@@ -1,9 +1,6 @@
 package com.garage.eindopdracht.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -20,11 +17,9 @@ public class Car {
 
     private LocalDate shp;
 
-
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    Customer customer;
 
 
 
@@ -60,4 +55,6 @@ public class Car {
     public void setShp(LocalDate shp) {
         this.shp = shp;
     }
+
+
 }
